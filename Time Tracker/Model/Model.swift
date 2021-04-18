@@ -11,16 +11,26 @@ import Foundation
 /// The `Model` for the Time Tracker App
 class Model: ObservableObject {
     /// All `Activity` entries stored as a list
-    @Published var storedActivities: [Activity]
-    /// All available `Activity` names
-//    @Published var allActivityNames: [String]
+    @Published var activities: [Activity]
+    /// All `TimeInterval`s stored as a list
+    @Published var timeIntervals: [TimeInterval]
+    
+    /// Store the active `TimeInterval` internally to access its id in a constant time to modify the interval if needed
+    private var activeTimeIntervals: [TimeInterval] = []
     
     /// - Parameters:
     ///     - storedActivities: All `Activity` entries stored as a list
     ///     - allActivityNames: All available `Activity` names
-    init(storedActivities: [Activity] = [], allActivityNames: [String] = []) {
-        self.storedActivities = storedActivities
-//        self.allActivityNames = allActivityNames
+    init(activities: [Activity] = [], timeIntervals: [TimeInterval] = []) {
+        self.activities = activities
+        self.timeIntervals = timeIntervals
+        
+        updateStates()
+    }
+    
+    /// Updates the states of this `Model`
+    func updateStates() {
+        self.activeTimeIntervals = self.timeIntervals.filter { $0.isActive }
     }
     
     /// Get an `Activity` for a specific ID
@@ -28,17 +38,33 @@ class Model: ObservableObject {
     ///    - id: The id of the `Activity`  to find
     /// - Returns: The corresponding `Activity` if there exists one with the specified id, otherwise nil
     func activity(_ id: Activity.ID) -> Activity? {
-        storedActivities.first { $0.id == id }
+        activities.first { $0.id == id }
     }
     
-    /// Change the `Activity`'s state by toggling its isActive property
+    /// Change the `Activity`'s state by toggling its isActive property and manage the corresponding `TimeInterval`s
     /// - Parameters:
     ///    - id: The id of the `Activity` to update
-    func toggleActivity(of id: Activity.ID) {
-        guard let index = storedActivities.firstIndex(where: { $0.id == id }) else {
+    func toggleActivity(with id: Activity.ID) {
+        guard let index = activities.firstIndex(where: { $0.id == id }) else {
             return
         }
+        activities[index].toggle()
         
-        storedActivities[index].toggle()
+        let currentActivity = activities[index]
+        if currentActivity.isActive {
+            let newTimeInterval = TimeInterval(activity: currentActivity.id)
+            
+            timeIntervals.append(newTimeInterval)
+            activeTimeIntervals.append(newTimeInterval)
+        } else {
+            guard let activeTimeInterval = activeTimeIntervals.first(where: { $0.activity == currentActivity.id }),
+                  let index = timeIntervals.firstIndex(where: { $0.id == activeTimeInterval.id }) else {
+                // there is no active interval associated with the currentActivity that was stopped
+                return
+            }
+            
+            self.activeTimeIntervals = activeTimeIntervals.filter { $0.id != activeTimeInterval.id }
+            timeIntervals[index].stop()
+        }
     }
 }

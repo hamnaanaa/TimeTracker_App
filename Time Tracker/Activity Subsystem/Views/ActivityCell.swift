@@ -29,6 +29,7 @@ struct ActivityCell: View {
     /// The stroke width of the line used as a border for this `ActivityCell`
     private var lineWidth: CGFloat = 2
     
+    
     /// A view displaying the name of the `Activity` and the timeline
     private var description: some View {
         VStack(alignment: .leading) {
@@ -105,6 +106,7 @@ struct ActivityCell: View {
         }.foregroundColor(.primary)
     }
     
+    
     /// - Parameters:
     ///     - model: The `Model` to read the `Activity` from
     ///     - id: The stable identity of the `Activity`
@@ -120,7 +122,7 @@ struct ActivityCell_Previews: PreviewProvider {
     
     static var previews: some View {
         Group {
-            ForEach(model.storedActivities) { activity in
+            ForEach(model.activities) { activity in
                 ForEach(colorSchemes, id: \.hashValue) { colorScheme in
                     ActivityCell(model, id: activity.id)
                         .preferredColorScheme(colorScheme)

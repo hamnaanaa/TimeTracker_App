@@ -23,6 +23,6 @@ class ActivitiesListViewModel: ObservableObject {
     }
     
     private func updateState() {
-        self.activities = model.storedActivities
+        self.activities = model.activities
     }
 }

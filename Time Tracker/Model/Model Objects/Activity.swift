@@ -27,8 +27,6 @@ struct Activity {
     ///     - id: The stable identity of the `Activity` (generated from init by default)
     ///     - name: The name of the `Activity`
     ///     - color: The color of the `Activity`
-    ///     - startTime: The startTime of the `Activity` (generated from init by default as the current date)
-    ///     - endTime: The endTime of the `Activity` (by default nil indicating that this `Activity` is stil active)
     init(id: UUID = UUID(), name: String, color: Color, isActive: Bool = true, imageName: String = "record.circle") {
         self.id = id
         self.name = name
@@ -43,8 +41,10 @@ struct Activity {
     }
 }
 
+// MARK: Activity: Identifiable
 extension Activity: Identifiable { }
 
+// MARK: Activity: Comparable
 extension Activity: Comparable {
     /// Lexicographic order
     static func < (lhs: Activity, rhs: Activity) -> Bool {

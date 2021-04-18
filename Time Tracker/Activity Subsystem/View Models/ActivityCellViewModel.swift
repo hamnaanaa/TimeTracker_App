@@ -30,6 +30,7 @@ class AcitivityCellViewModel: ObservableObject {
     /// The `Model` to read the `Activity` from
     @ObservedObject var model: Model
     
+    
     /// - Parameters:
     ///     - model: The `Model` to read the `Activity` from
     ///     - id: The stable identity of the `Activity`
@@ -55,6 +56,6 @@ class AcitivityCellViewModel: ObservableObject {
     /// Toggle the `Activity`'s isActive property
     func toggleActivity() {
         isActive.toggle()
-        model.toggleActivity(of: id)
+        model.toggleActivity(with: id)
     }
 }

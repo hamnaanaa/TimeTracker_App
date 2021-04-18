@@ -28,6 +28,14 @@ class MockModel: Model {
             MockModel.createActivity("Sleep", color: .orange, isActive: false)
         ]
         
-        self.init(storedActivities: allActivities)
+        let timeIntervals = allActivities.compactMap { activity -> TimeInterval? in
+            if activity.isActive {
+                return TimeInterval(activity: activity.id)
+            } else {
+                return nil
+            }
+        }
+        
+        self.init(activities: allActivities, timeIntervals: timeIntervals)
     }
 }

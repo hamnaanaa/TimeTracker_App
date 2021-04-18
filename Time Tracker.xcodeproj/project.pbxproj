@@ -10,7 +10,7 @@
 		F20FDB02262B9C7A00ADC9D1 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FDB01262B9C7A00ADC9D1 /* MockModel.swift */; };
 		F250928F262C850F0023A42B /* ActivitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250928E262C850F0023A42B /* ActivitiesListViewModel.swift */; };
 		F2509293262C85430023A42B /* ActivitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509292262C85430023A42B /* ActivitiesListView.swift */; };
-		F2509296262CCDC90023A42B /* Interval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509295262CCDC90023A42B /* Interval.swift */; };
+		F2509296262CCDC90023A42B /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509295262CCDC90023A42B /* TimeInterval.swift */; };
 		F2DA77EA262B5541000174A3 /* Time_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77E9262B5541000174A3 /* Time_TrackerApp.swift */; };
 		F2DA77EC262B5541000174A3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77EB262B5541000174A3 /* MainView.swift */; };
 		F2DA77EE262B5542000174A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DA77ED262B5542000174A3 /* Assets.xcassets */; };
@@ -25,7 +25,7 @@
 		F20FDB01262B9C7A00ADC9D1 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
 		F250928E262C850F0023A42B /* ActivitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesListViewModel.swift; sourceTree = "<group>"; };
 		F2509292262C85430023A42B /* ActivitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesListView.swift; sourceTree = "<group>"; };
-		F2509295262CCDC90023A42B /* Interval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Interval.swift; sourceTree = "<group>"; };
+		F2509295262CCDC90023A42B /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		F2DA77E6262B5541000174A3 /* Time Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DA77E9262B5541000174A3 /* Time_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackerApp.swift; sourceTree = "<group>"; };
 		F2DA77EB262B5541000174A3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 			isa = PBXGroup;
 			children = (
 				F2DA7802262B56A4000174A3 /* Activity.swift */,
-				F2509295262CCDC90023A42B /* Interval.swift */,
+				F2509295262CCDC90023A42B /* TimeInterval.swift */,
 			);
 			path = "Model Objects";
 			sourceTree = "<group>";
@@ -218,7 +218,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F2509296262CCDC90023A42B /* Interval.swift in Sources */,
+				F2509296262CCDC90023A42B /* TimeInterval.swift in Sources */,
 				F2DA7803262B56A4000174A3 /* Activity.swift in Sources */,
 				F2509293262C85430023A42B /* ActivitiesListView.swift in Sources */,
 				F2DA77FF262B5660000174A3 /* Model.swift in Sources */,

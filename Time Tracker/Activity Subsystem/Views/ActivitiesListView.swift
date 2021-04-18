@@ -12,11 +12,13 @@ struct ActivitiesListView: View {
     @EnvironmentObject var model: Model
     @ObservedObject var viewModel: ActivitiesListViewModel
     
+    
     var body: some View {
         List(viewModel.activities) { activity in
             ActivityCell(model, id: activity.id)
         }
     }
+    
     
     init(_ model: Model) {
         viewModel = ActivitiesListViewModel(model)
