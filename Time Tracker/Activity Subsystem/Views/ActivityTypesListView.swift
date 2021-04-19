@@ -14,8 +14,16 @@ struct ActivityTypesListView: View {
     
     
     var body: some View {
-        List(viewModel.activityTypes) { activity in
-            ActivityTypeCell(model, id: activity.id)
+        NavigationView {
+            List(viewModel.activityTypes) { activity in
+                ActivityTypeCell(model, id: activity.id)
+            }.navigationBarTitle("Today", displayMode: .inline)
+            .toolbar {
+                // TODO add functionality
+                Button(action: { }) {
+                    Image(systemName: "plus")
+                }
+            }
         }
     }
     

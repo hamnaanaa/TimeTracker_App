@@ -11,7 +11,12 @@ struct MainView: View {
     @EnvironmentObject var model: Model
     
     var body: some View {
-        ActivityTypesListView(model)
+        TabView {
+            ActivityTypesListView(model)
+                .tabItem { Image(systemName: "timelapse") }
+            TimeIntervalsListView(model)
+                .tabItem { Image(systemName: "timer") }
+        }
     }
 }
 
