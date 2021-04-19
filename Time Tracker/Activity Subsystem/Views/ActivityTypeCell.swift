@@ -7,30 +7,30 @@
 
 import SwiftUI
 
-// MARK: - ActivityCell
-/// A view (activity cell) representing a single `Activity`
-struct ActivityCell: View {
-    /// The ViewModel to manage the logic of this `ActivityCell`
-    @ObservedObject private var viewModel: AcitivityCellViewModel
+// MARK: - ActivityTypeCell
+/// A view (activity cell) representing a single `ActivityTypeCell`
+struct ActivityTypeCell: View {
+    /// The ViewModel to manage the logic of this `ActivityTypeCell`
+    @ObservedObject private var viewModel: AcitivityTypeCellViewModel
     
     // Visual constants
-    /// The standard color for the inactive `ActivityCell`
+    /// The standard color for the inactive `ActivityTypeCell`
     private var inactiveColor: Color = .secondary
-    /// The radius of corners used to display the `ActivityCell`
+    /// The radius of corners used to display the `ActivityTypeCell`
     private var cornerRadius: CGFloat = 20
-    /// The frame size used to display the border and image of `ActivityCell`
+    /// The frame size used to display the border and image of `ActivityTypeCell`
     private var borderFrameSize: CGFloat = 75
     private var imageFrameSize: CGFloat = 35
-    /// The opacities used for the gradient of background's color of the `ActivityCell` depending on state
+    /// The opacities used for the gradient of background's color of the `ActivityTypeCell` depending on state
     private var activeLeadingOpacity: Double = 1.0
     private var activeTrailingOpacity: Double = 0.3
     private var inactiveLeadingOpacity: Double = 0.4
     private var inactiveTrailingOpacity: Double = 0.1
-    /// The stroke width of the line used as a border for this `ActivityCell`
+    /// The stroke width of the line used as a border for this `ActivityTypeCell`
     private var lineWidth: CGFloat = 2
     
     
-    /// A view displaying the name of the `Activity` and the timeline
+    /// A view displaying the name of the `ActivityType` and the timeline
     private var description: some View {
         VStack(alignment: .leading) {
             Text(viewModel.name)
@@ -52,7 +52,7 @@ struct ActivityCell: View {
         }
     }
     
-    /// A view representing the background of this `ActivityCell`
+    /// A view representing the background of this `ActivityTypeCell`
     private var activityBackground: some View {
         // TODO: move to a separate view for better code readability?
         if viewModel.isActive {
@@ -84,7 +84,7 @@ struct ActivityCell: View {
         }
     }
     
-    /// A view representing the foreground (text/icon/time) of this `ActivityCell`
+    /// A view representing the foreground (text/icon/time) of this `ActivityTypeCell`
     private var activityForeground: some View {
         HStack(spacing: 16) {
             Image(systemName: viewModel.imageName)
@@ -97,7 +97,7 @@ struct ActivityCell: View {
     }
     
     var body: some View {
-        Button(action: { viewModel.toggleActivity() }) {
+        Button(action: { viewModel.toggleActivityType() }) {
             ZStack {
                 activityBackground
                 activityForeground
@@ -108,23 +108,23 @@ struct ActivityCell: View {
     
     
     /// - Parameters:
-    ///     - model: The `Model` to read the `Activity` from
-    ///     - id: The stable identity of the `Activity`
-    init(_ model: Model, id: Activity.ID) {
-        viewModel = AcitivityCellViewModel(model, id: id)
+    ///     - model: The `Model` to read the `ActivityType` from
+    ///     - id: The stable identity of the `ActivityType`
+    init(_ model: Model, id: ActivityType.ID) {
+        viewModel = AcitivityTypeCellViewModel(model, id: id)
     }
 }
 
-struct ActivityCell_Previews: PreviewProvider {
+struct ActivityTypeCell_Previews: PreviewProvider {
     private static var model = MockModel()
     // different color schemes to test
     private static var colorSchemes = [ColorScheme.light, .dark]
     
     static var previews: some View {
         Group {
-            ForEach(model.activities) { activity in
+            ForEach(model.activityTypes) { activity in
                 ForEach(colorSchemes, id: \.hashValue) { colorScheme in
-                    ActivityCell(model, id: activity.id)
+                    ActivityTypeCell(model, id: activity.id)
                         .preferredColorScheme(colorScheme)
                 }
             }

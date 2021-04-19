@@ -9,41 +9,41 @@ import Foundation
 import SwiftUI
 
 // MARK: - ActivityCellViewModel
-/// A ViewModel for the `ActivityCell`
-class AcitivityCellViewModel: ObservableObject {
+/// A ViewModel for the `ActivityTypeCell`
+class AcitivityTypeCellViewModel: ObservableObject {
     // State properties
-    /// The name of this `Activity`
+    /// The name of this `ActivityType`
     @Published var name: String = ""
-    /// Indicates whether this `Activity` is still active
+    /// Indicates whether this `ActivityType` is still active
     @Published var isActive: Bool = false
-    /// Stores the color of this `Activity`
+    /// Stores the color of this `ActivityType`
     @Published var color: Color = Color(red: .random(in: 0...1),
                                         green: .random(in: 0...1),
                                         blue: .random(in: 0...1))
-    /// The name of the image associated with this `Activity`
+    /// The name of the image associated with this `ActivityType`
     @Published var imageName: String = ""
     
     
     // ID and connections
-    /// The unique identity of the `Activity`
-    var id: Activity.ID
-    /// The `Model` to read the `Activity` from
+    /// The unique identity of the `ActivityType`
+    var id: ActivityType.ID
+    /// The `Model` to read the `ActivityType` from
     @ObservedObject var model: Model
     
     
     /// - Parameters:
-    ///     - model: The `Model` to read the `Activity` from
-    ///     - id: The stable identity of the `Activity`
-    init(_ model: Model, id: Activity.ID) {
+    ///     - model: The `Model` to read the `ActivityType` from
+    ///     - id: The stable identity of the `ActivityType`
+    init(_ model: Model, id: ActivityType.ID) {
         self.model = model
         self.id = id
         
         updateStates()
     }
     
-    /// Update the `Activity` state for this ViewModel
+    /// Update the `ActivityType` state for this ViewModel
     private func updateStates() {
-        guard let activity = model.activity(id) else {
+        guard let activity = model.activityType(id) else {
             return
         }
         
@@ -53,9 +53,9 @@ class AcitivityCellViewModel: ObservableObject {
         self.imageName = activity.imageName
     }
     
-    /// Toggle the `Activity`'s isActive property
-    func toggleActivity() {
+    /// Toggle the `ActivityType`'s isActive property
+    func toggleActivityType() {
         isActive.toggle()
-        model.toggleActivity(with: id)
+        model.toggleActivityType(with: id)
     }
 }

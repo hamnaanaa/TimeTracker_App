@@ -8,23 +8,23 @@
 
 /* Begin PBXBuildFile section */
 		F20FDB02262B9C7A00ADC9D1 /* MockModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F20FDB01262B9C7A00ADC9D1 /* MockModel.swift */; };
-		F250928F262C850F0023A42B /* ActivitiesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250928E262C850F0023A42B /* ActivitiesListViewModel.swift */; };
-		F2509293262C85430023A42B /* ActivitiesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509292262C85430023A42B /* ActivitiesListView.swift */; };
+		F250928F262C850F0023A42B /* ActivityTypesListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F250928E262C850F0023A42B /* ActivityTypesListViewModel.swift */; };
+		F2509293262C85430023A42B /* ActivityTypesListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509292262C85430023A42B /* ActivityTypesListView.swift */; };
 		F2509296262CCDC90023A42B /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509295262CCDC90023A42B /* TimeInterval.swift */; };
 		F2DA77EA262B5541000174A3 /* Time_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77E9262B5541000174A3 /* Time_TrackerApp.swift */; };
 		F2DA77EC262B5541000174A3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77EB262B5541000174A3 /* MainView.swift */; };
 		F2DA77EE262B5542000174A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DA77ED262B5542000174A3 /* Assets.xcassets */; };
 		F2DA77F1262B5542000174A3 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DA77F0262B5542000174A3 /* Preview Assets.xcassets */; };
 		F2DA77FF262B5660000174A3 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77FE262B5660000174A3 /* Model.swift */; };
-		F2DA7803262B56A4000174A3 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA7802262B56A4000174A3 /* Activity.swift */; };
-		F2DA7808262B5756000174A3 /* ActivityCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA7807262B5756000174A3 /* ActivityCell.swift */; };
-		F2DA780C262B5839000174A3 /* ActivityCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA780B262B5839000174A3 /* ActivityCellViewModel.swift */; };
+		F2DA7803262B56A4000174A3 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA7802262B56A4000174A3 /* ActivityType.swift */; };
+		F2DA7808262B5756000174A3 /* ActivityTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA7807262B5756000174A3 /* ActivityTypeCell.swift */; };
+		F2DA780C262B5839000174A3 /* ActivityTypeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA780B262B5839000174A3 /* ActivityTypeCellViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F20FDB01262B9C7A00ADC9D1 /* MockModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockModel.swift; sourceTree = "<group>"; };
-		F250928E262C850F0023A42B /* ActivitiesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesListViewModel.swift; sourceTree = "<group>"; };
-		F2509292262C85430023A42B /* ActivitiesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivitiesListView.swift; sourceTree = "<group>"; };
+		F250928E262C850F0023A42B /* ActivityTypesListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypesListViewModel.swift; sourceTree = "<group>"; };
+		F2509292262C85430023A42B /* ActivityTypesListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypesListView.swift; sourceTree = "<group>"; };
 		F2509295262CCDC90023A42B /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		F2DA77E6262B5541000174A3 /* Time Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DA77E9262B5541000174A3 /* Time_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackerApp.swift; sourceTree = "<group>"; };
@@ -33,9 +33,9 @@
 		F2DA77F0262B5542000174A3 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F2DA77F2262B5542000174A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F2DA77FE262B5660000174A3 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
-		F2DA7802262B56A4000174A3 /* Activity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		F2DA7807262B5756000174A3 /* ActivityCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCell.swift; sourceTree = "<group>"; };
-		F2DA780B262B5839000174A3 /* ActivityCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCellViewModel.swift; sourceTree = "<group>"; };
+		F2DA7802262B56A4000174A3 /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
+		F2DA7807262B5756000174A3 /* ActivityTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeCell.swift; sourceTree = "<group>"; };
+		F2DA780B262B5839000174A3 /* ActivityTypeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeCellViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +109,7 @@
 		F2DA7801262B5687000174A3 /* Model Objects */ = {
 			isa = PBXGroup;
 			children = (
-				F2DA7802262B56A4000174A3 /* Activity.swift */,
+				F2DA7802262B56A4000174A3 /* ActivityType.swift */,
 				F2509295262CCDC90023A42B /* TimeInterval.swift */,
 			);
 			path = "Model Objects";
@@ -127,8 +127,8 @@
 		F2DA7806262B572B000174A3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				F2DA7807262B5756000174A3 /* ActivityCell.swift */,
-				F2509292262C85430023A42B /* ActivitiesListView.swift */,
+				F2DA7807262B5756000174A3 /* ActivityTypeCell.swift */,
+				F2509292262C85430023A42B /* ActivityTypesListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -136,8 +136,8 @@
 		F2DA780A262B5829000174A3 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				F2DA780B262B5839000174A3 /* ActivityCellViewModel.swift */,
-				F250928E262C850F0023A42B /* ActivitiesListViewModel.swift */,
+				F2DA780B262B5839000174A3 /* ActivityTypeCellViewModel.swift */,
+				F250928E262C850F0023A42B /* ActivityTypesListViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -219,15 +219,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				F2509296262CCDC90023A42B /* TimeInterval.swift in Sources */,
-				F2DA7803262B56A4000174A3 /* Activity.swift in Sources */,
-				F2509293262C85430023A42B /* ActivitiesListView.swift in Sources */,
+				F2DA7803262B56A4000174A3 /* ActivityType.swift in Sources */,
+				F2509293262C85430023A42B /* ActivityTypesListView.swift in Sources */,
 				F2DA77FF262B5660000174A3 /* Model.swift in Sources */,
 				F2DA77EC262B5541000174A3 /* MainView.swift in Sources */,
 				F20FDB02262B9C7A00ADC9D1 /* MockModel.swift in Sources */,
-				F250928F262C850F0023A42B /* ActivitiesListViewModel.swift in Sources */,
-				F2DA780C262B5839000174A3 /* ActivityCellViewModel.swift in Sources */,
+				F250928F262C850F0023A42B /* ActivityTypesListViewModel.swift in Sources */,
+				F2DA780C262B5839000174A3 /* ActivityTypeCellViewModel.swift in Sources */,
 				F2DA77EA262B5541000174A3 /* Time_TrackerApp.swift in Sources */,
-				F2DA7808262B5756000174A3 /* ActivityCell.swift in Sources */,
+				F2DA7808262B5756000174A3 /* ActivityTypeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

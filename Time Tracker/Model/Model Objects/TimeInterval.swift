@@ -17,7 +17,7 @@ struct TimeInterval {
     /// The optional end time of this `TimeInterval` with nil representing an active one
     var endTime: Date?
     /// The  `Activity` this `TimeInterval` is linked to
-    var activity: Activity.ID
+    var activityType: ActivityType.ID
     
     /// A computed property indicating whether this `TimeInterval` is still active
     var isActive: Bool {
@@ -28,12 +28,12 @@ struct TimeInterval {
     /// - Parameters:
     ///     - id: The stable identity of the `TimeInterval` (generated from init by default)
     ///     - startTime: The startTime of the `TimeInterval` (generated from init by default as the current date)
-    ///     - endTime: The endTime of the `TimeInterval` (by default nil indicating that this `Activity` is stil active)
-    init(id: UUID = UUID(), startTime: Date = Date(), endTime: Date? = nil, activity: Activity.ID) {
+    ///     - endTime: The endTime of the `TimeInterval` (by default nil indicating that this `ActivityType` is stil active)
+    init(id: UUID = UUID(), startTime: Date = Date(), endTime: Date? = nil, activityType: ActivityType.ID) {
         self.id = id
         self.startTime = startTime
         self.endTime = endTime
-        self.activity = activity
+        self.activityType = activityType
     }
     
     /// Stop this `TimeInterval` at the given (by default current) time

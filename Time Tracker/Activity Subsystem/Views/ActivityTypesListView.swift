@@ -8,31 +8,31 @@
 import SwiftUI
 
 // TODO description
-struct ActivitiesListView: View {
+struct ActivityTypesListView: View {
     @EnvironmentObject var model: Model
-    @ObservedObject var viewModel: ActivitiesListViewModel
+    @ObservedObject var viewModel: ActivityTypesListViewModel
     
     
     var body: some View {
-        List(viewModel.activities) { activity in
-            ActivityCell(model, id: activity.id)
+        List(viewModel.activityTypes) { activity in
+            ActivityTypeCell(model, id: activity.id)
         }
     }
     
     
     init(_ model: Model) {
-        viewModel = ActivitiesListViewModel(model)
+        viewModel = ActivityTypesListViewModel(model)
     }
 }
 
-struct ActivitiesListView_Previews: PreviewProvider {
+struct ActivityTypesListView_Previews: PreviewProvider {
     private static var model = MockModel()
     
     static var previews: some View {
         Group {
-            ActivitiesListView(model)
+            ActivityTypesListView(model)
                 .preferredColorScheme(.light)
-            ActivitiesListView(model)
+            ActivityTypesListView(model)
                 .preferredColorScheme(.dark)
         }
         .environmentObject(model as Model)

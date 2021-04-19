@@ -9,12 +9,12 @@ import Foundation
 import SwiftUI
 
 // MARK: - TODO
-class ActivitiesListViewModel: ObservableObject {
+class ActivityTypesListViewModel: ObservableObject {
     //TODO
     /// The `Model` to read the list of `Activity`s from
     @ObservedObject var model: Model
     
-    @Published var activities: [Activity] = []
+    @Published var activityTypes: [ActivityType] = []
     
     init(_ model: Model) {
         self.model = model
@@ -23,6 +23,6 @@ class ActivitiesListViewModel: ObservableObject {
     }
     
     private func updateState() {
-        self.activities = model.activities
+        self.activityTypes = model.activityTypes
     }
 }

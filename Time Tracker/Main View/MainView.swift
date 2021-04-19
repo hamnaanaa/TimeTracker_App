@@ -11,7 +11,7 @@ struct MainView: View {
     @EnvironmentObject var model: Model
     
     var body: some View {
-        ActivitiesListView(model)
+        ActivityTypesListView(model)
     }
 }
 
