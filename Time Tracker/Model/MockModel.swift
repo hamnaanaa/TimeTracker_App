@@ -28,11 +28,11 @@ class MockModel: Model {
             MockModel.createActivity("Sleep", color: .orange, isActive: false)
         ]
         
-        let timeIntervals = allActivityTypes.compactMap { activityType -> TimeInterval? in
+        let timeIntervals = allActivityTypes.map { activityType -> TimeInterval in
             if activityType.isActive {
                 return TimeInterval(activityType: activityType.id)
             } else {
-                return nil
+                return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: Date(), activityType: activityType.id)
             }
         }
         

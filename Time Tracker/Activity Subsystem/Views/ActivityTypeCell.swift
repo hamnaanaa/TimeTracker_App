@@ -19,7 +19,7 @@ struct ActivityTypeCell: View {
     /// The radius of corners used to display the `ActivityTypeCell`
     private var cornerRadius: CGFloat = 20
     /// The frame size used to display the border and image of `ActivityTypeCell`
-    private var borderFrameSize: CGFloat = 75
+    private var borderFrameSize: CGFloat = 65
     private var imageFrameSize: CGFloat = 35
     /// The opacities used for the gradient of background's color of the `ActivityTypeCell` depending on state
     private var activeLeadingOpacity: Double = 1.0
@@ -52,40 +52,28 @@ struct ActivityTypeCell: View {
         }
     }
     
-    /// A view representing the background of this `ActivityTypeCell`
-    private var activityBackground: some View {
-        // TODO: move to a separate view for better code readability?
-        if viewModel.isActive {
-            // active background
-            return RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(lineWidth: lineWidth)
-                .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(
-                            LinearGradient(gradient: Gradient(colors: [viewModel.color.opacity(activeLeadingOpacity), viewModel.color.opacity(activeTrailingOpacity)]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing)
-                        )
-                )
-                .frame(height: borderFrameSize)
-        } else {
-            // inactive background
-            return RoundedRectangle(cornerRadius: cornerRadius)
-                .stroke(lineWidth: lineWidth)
-                .background(
-                    RoundedRectangle(cornerRadius: cornerRadius)
-                        .fill(
-                            LinearGradient(gradient: Gradient(colors: [inactiveColor.opacity(inactiveLeadingOpacity), inactiveColor.opacity(inactiveTrailingOpacity)]),
-                                           startPoint: .leading,
-                                           endPoint: .trailing)
-                        )
-                )
-                .frame(height: borderFrameSize)
-        }
+    /// A view displaying the background of this `ActivityTypeCell`
+    private var activityTypeBackground: some View {
+        RoundedRectangle(cornerRadius: cornerRadius)
+            .stroke(lineWidth: lineWidth)
+            .background(
+                RoundedRectangle(cornerRadius: cornerRadius)
+                    .fill(
+                        LinearGradient(gradient:
+                                        Gradient(
+                                            colors: [
+                                                viewModel.isActive ? viewModel.color.opacity(activeLeadingOpacity) : inactiveColor.opacity(inactiveLeadingOpacity),
+                                                viewModel.isActive ? viewModel.color.opacity(activeTrailingOpacity) : inactiveColor.opacity(inactiveTrailingOpacity)]
+                                        ),
+                                       startPoint: .leading,
+                                       endPoint: .trailing)
+                    )
+            )
+            .frame(height: borderFrameSize)
     }
     
-    /// A view representing the foreground (text/icon/time) of this `ActivityTypeCell`
-    private var activityForeground: some View {
+    /// A view displaying the foreground (text/icon/time) of this `ActivityTypeCell`
+    private var activityTypeForeground: some View {
         HStack(spacing: 16) {
             Image(systemName: viewModel.imageName)
                 .resizable()
@@ -99,9 +87,10 @@ struct ActivityTypeCell: View {
     var body: some View {
         Button(action: { viewModel.toggleActivityType() }) {
             ZStack {
-                activityBackground
-                activityForeground
-                    .padding()
+                activityTypeBackground
+                activityTypeForeground
+                    .padding(.leading)
+                    .padding(.trailing)
             }
         }.foregroundColor(.primary)
     }
@@ -115,6 +104,7 @@ struct ActivityTypeCell: View {
     }
 }
 
+// MARK: - ActivityTypeCell Previews
 struct ActivityTypeCell_Previews: PreviewProvider {
     private static var model = MockModel()
     // different color schemes to test

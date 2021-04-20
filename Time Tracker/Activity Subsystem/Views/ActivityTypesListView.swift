@@ -7,32 +7,42 @@
 
 import SwiftUI
 
-// TODO description
+// MARK: - ActivityTypesListView
+/// A view representing a list of `ActivityType`s
 struct ActivityTypesListView: View {
-    @EnvironmentObject var model: Model
-    @ObservedObject var viewModel: ActivityTypesListViewModel
+    /// The `Model` to read the `ActivityType`s from
+    @EnvironmentObject private var model: Model
+    /// The ViewModel to manage the logic of this `ActivityTypesListView`
+    @ObservedObject private var viewModel: ActivityTypesListViewModel
     
     
     var body: some View {
         NavigationView {
             List(viewModel.activityTypes) { activity in
                 ActivityTypeCell(model, id: activity.id)
-            }.navigationBarTitle("Today", displayMode: .inline)
+            }
+            .navigationBarTitle("Activities", displayMode: .inline)
             .toolbar {
                 // TODO add functionality
                 Button(action: { }) {
                     Image(systemName: "plus")
                 }
             }
+            .padding(.top, 10)
+            .padding(.trailing, -10)
+            .padding(.leading, -10)
         }
     }
     
     
+    /// - Parameters:
+    ///     - model: The `Model` to read `ActivityType`s from
     init(_ model: Model) {
         viewModel = ActivityTypesListViewModel(model)
     }
 }
 
+// MARK: - ActivityTypesListView Previews
 struct ActivityTypesListView_Previews: PreviewProvider {
     private static var model = MockModel()
     

@@ -13,6 +13,11 @@
 		F2509296262CCDC90023A42B /* TimeInterval.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2509295262CCDC90023A42B /* TimeInterval.swift */; };
 		F25092A1262E025E0023A42B /* TimeIntervalsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25092A0262E025E0023A42B /* TimeIntervalsListView.swift */; };
 		F25092A8262E03230023A42B /* TimeIntervalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25092A7262E03230023A42B /* TimeIntervalCell.swift */; };
+		F25092AC262E119F0023A42B /* TimeIntervalCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25092AB262E119F0023A42B /* TimeIntervalCellViewModel.swift */; };
+		F25092B8262EEE340023A42B /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25092B7262EEE340023A42B /* DateFormatter.swift */; };
+		F25092BC262EF64B0023A42B /* TimeDisplayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25092BB262EF64B0023A42B /* TimeDisplayer.swift */; };
+		F25092C0262F3AC50023A42B /* TimeIntervalsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F25092BF262F3AC50023A42B /* TimeIntervalsListViewModel.swift */; };
+		F2B4435F262F6D3200EDC7D5 /* NavigationBarColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B4435E262F6D3200EDC7D5 /* NavigationBarColor.swift */; };
 		F2DA77EA262B5541000174A3 /* Time_TrackerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77E9262B5541000174A3 /* Time_TrackerApp.swift */; };
 		F2DA77EC262B5541000174A3 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA77EB262B5541000174A3 /* MainView.swift */; };
 		F2DA77EE262B5542000174A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F2DA77ED262B5542000174A3 /* Assets.xcassets */; };
@@ -30,6 +35,11 @@
 		F2509295262CCDC90023A42B /* TimeInterval.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeInterval.swift; sourceTree = "<group>"; };
 		F25092A0262E025E0023A42B /* TimeIntervalsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalsListView.swift; sourceTree = "<group>"; };
 		F25092A7262E03230023A42B /* TimeIntervalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalCell.swift; sourceTree = "<group>"; };
+		F25092AB262E119F0023A42B /* TimeIntervalCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalCellViewModel.swift; sourceTree = "<group>"; };
+		F25092B7262EEE340023A42B /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		F25092BB262EF64B0023A42B /* TimeDisplayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeDisplayer.swift; sourceTree = "<group>"; };
+		F25092BF262F3AC50023A42B /* TimeIntervalsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeIntervalsListViewModel.swift; sourceTree = "<group>"; };
+		F2B4435E262F6D3200EDC7D5 /* NavigationBarColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarColor.swift; sourceTree = "<group>"; };
 		F2DA77E6262B5541000174A3 /* Time Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Time Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2DA77E9262B5541000174A3 /* Time_TrackerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time_TrackerApp.swift; sourceTree = "<group>"; };
 		F2DA77EB262B5541000174A3 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
@@ -65,6 +75,8 @@
 		F25092A5262E02FE0023A42B /* View Models */ = {
 			isa = PBXGroup;
 			children = (
+				F25092AB262E119F0023A42B /* TimeIntervalCellViewModel.swift */,
+				F25092BF262F3AC50023A42B /* TimeIntervalsListViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -76,6 +88,15 @@
 				F25092A0262E025E0023A42B /* TimeIntervalsListView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		F25092B6262EEE200023A42B /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				F25092B7262EEE340023A42B /* DateFormatter.swift */,
+				F25092BB262EF64B0023A42B /* TimeDisplayer.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		F2DA77DD262B5541000174A3 = {
@@ -103,6 +124,7 @@
 				F2DA7805262B5709000174A3 /* Activity Subsystem */,
 				F25092A4262E02F00023A42B /* Interval Subsystem */,
 				F2DA7812262B5CBC000174A3 /* View Modifiers */,
+				F25092B6262EEE200023A42B /* Helpers */,
 				F2DA77ED262B5542000174A3 /* Assets.xcassets */,
 				F2DA77F2262B5542000174A3 /* Info.plist */,
 				F2DA77EF262B5542000174A3 /* Preview Content */,
@@ -175,6 +197,7 @@
 		F2DA7812262B5CBC000174A3 /* View Modifiers */ = {
 			isa = PBXGroup;
 			children = (
+				F2B4435E262F6D3200EDC7D5 /* NavigationBarColor.swift */,
 			);
 			path = "View Modifiers";
 			sourceTree = "<group>";
@@ -250,13 +273,18 @@
 			files = (
 				F2509296262CCDC90023A42B /* TimeInterval.swift in Sources */,
 				F25092A8262E03230023A42B /* TimeIntervalCell.swift in Sources */,
+				F25092AC262E119F0023A42B /* TimeIntervalCellViewModel.swift in Sources */,
 				F2DA7803262B56A4000174A3 /* ActivityType.swift in Sources */,
+				F2B4435F262F6D3200EDC7D5 /* NavigationBarColor.swift in Sources */,
+				F25092C0262F3AC50023A42B /* TimeIntervalsListViewModel.swift in Sources */,
 				F2509293262C85430023A42B /* ActivityTypesListView.swift in Sources */,
 				F2DA77FF262B5660000174A3 /* Model.swift in Sources */,
 				F2DA77EC262B5541000174A3 /* MainView.swift in Sources */,
 				F25092A1262E025E0023A42B /* TimeIntervalsListView.swift in Sources */,
 				F20FDB02262B9C7A00ADC9D1 /* MockModel.swift in Sources */,
+				F25092BC262EF64B0023A42B /* TimeDisplayer.swift in Sources */,
 				F250928F262C850F0023A42B /* ActivityTypesListViewModel.swift in Sources */,
+				F25092B8262EEE340023A42B /* DateFormatter.swift in Sources */,
 				F2DA780C262B5839000174A3 /* ActivityTypeCellViewModel.swift in Sources */,
 				F2DA77EA262B5541000174A3 /* Time_TrackerApp.swift in Sources */,
 				F2DA7808262B5756000174A3 /* ActivityTypeCell.swift in Sources */,

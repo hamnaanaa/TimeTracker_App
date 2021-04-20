@@ -37,8 +37,16 @@ class Model: ObservableObject {
     /// - Parameters:
     ///    - id: The id of the `ActivityType`  to find
     /// - Returns: The corresponding `ActivityType` if there exists one with the specified id, otherwise nil
-    func activityType(_ id: ActivityType.ID) -> ActivityType? {
+    func activityType(_ id: ActivityType.ID?) -> ActivityType? {
         activityTypes.first { $0.id == id }
+    }
+    
+    /// Get a `TimeInterval` for a specific ID
+    /// - Parameters:
+    ///    - id: The id of the `TimeInterval`  to find
+    /// - Returns: The corresponding `TimeInterval` if there exists one with the specified id, otherwise nil
+    func timeInterval(_ id: TimeInterval.ID) -> TimeInterval? {
+        timeIntervals.first { $0.id == id }
     }
     
     /// Change the `ActivityType`'s state by toggling its isActive property and manage the corresponding `TimeInterval`s

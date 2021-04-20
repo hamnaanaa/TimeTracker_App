@@ -17,6 +17,8 @@ struct MainView: View {
             TimeIntervalsListView(model)
                 .tabItem { Image(systemName: "timer") }
         }
+        .navigationBarColor(backgroundColor: #colorLiteral(red: 0.2392156869, green: 0.6745098233, blue: 0.9686274529, alpha: 1), tintColor: #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
+
     }
 }
 

@@ -17,7 +17,7 @@ struct TimeInterval {
     /// The optional end time of this `TimeInterval` with nil representing an active one
     var endTime: Date?
     /// The  `Activity` this `TimeInterval` is linked to
-    var activityType: ActivityType.ID
+    var activityType: ActivityType.ID?
     
     /// A computed property indicating whether this `TimeInterval` is still active
     var isActive: Bool {
@@ -29,7 +29,7 @@ struct TimeInterval {
     ///     - id: The stable identity of the `TimeInterval` (generated from init by default)
     ///     - startTime: The startTime of the `TimeInterval` (generated from init by default as the current date)
     ///     - endTime: The endTime of the `TimeInterval` (by default nil indicating that this `ActivityType` is stil active)
-    init(id: UUID = UUID(), startTime: Date = Date(), endTime: Date? = nil, activityType: ActivityType.ID) {
+    init(id: UUID = UUID(), startTime: Date = Date(), endTime: Date? = nil, activityType: ActivityType.ID?) {
         self.id = id
         self.startTime = startTime
         self.endTime = endTime
@@ -53,7 +53,6 @@ extension TimeInterval: Identifiable { }
 // MARK: TimeInterval: Comparable
 extension TimeInterval: Comparable {
     static func < (lhs: TimeInterval, rhs: TimeInterval) -> Bool {
-        // TODO make comparable
-        fatalError("Not implemented yet")
+        lhs.startTime > rhs.startTime
     }
 }

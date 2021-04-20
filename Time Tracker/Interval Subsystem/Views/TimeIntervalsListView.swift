@@ -7,15 +7,30 @@
 
 import SwiftUI
 
-// MARK: - TODO
+// MARK: - TimeIntervalsListView
+/// A view representing a list of `TimeInterval`s
 struct TimeIntervalsListView: View {
+    /// The `Model` to read the `TimeInterval`s from
+    @EnvironmentObject private var model: Model
+    /// The ViewModel to manage the logic of this `TimeIntervalsListView`
+    @ObservedObject private var viewModel: TimeIntervalsListViewModel
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            List(viewModel.timeIntervals.sorted()) { timeInterval in
+                TimeIntervalCell(model, id: timeInterval.id)
+            }.navigationBarTitle("Time Intervals", displayMode: .inline)
+            .toolbar {
+                // TODO add functionality
+                Button(action: { }) {
+                    Image(systemName: "plus")
+                }
+            }
+        }
     }
     
     init(_ model: Model) {
-        // TODO
+        viewModel = TimeIntervalsListViewModel(model)
     }
 }
 
