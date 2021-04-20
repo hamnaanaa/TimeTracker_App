@@ -8,9 +8,9 @@
 import Foundation
 import SwiftUI
 
-// MARK: - Activity
+// MARK: - ActivityType
 /// Represents an activity that can by activated
-struct Activity {
+struct ActivityType {
     /// The stable identifier of this `Activity`
     var id: UUID
     /// The name of this `Activity`
@@ -24,11 +24,9 @@ struct Activity {
 
     
     /// - Parameters:
-    ///     - id: The stable identity of the `Activity` (generated from init by default)
-    ///     - name: The name of the `Activity`
-    ///     - color: The color of the `Activity`
-    ///     - startTime: The startTime of the `Activity` (generated from init by default as the current date)
-    ///     - endTime: The endTime of the `Activity` (by default nil indicating that this `Activity` is stil active)
+    ///     - id: The stable identity of the `ActivityType` (generated from init by default)
+    ///     - name: The name of the `ActivityType`
+    ///     - color: The color of the `ActivityType`
     init(id: UUID = UUID(), name: String, color: Color, isActive: Bool = true, imageName: String = "record.circle") {
         self.id = id
         self.name = name
@@ -43,11 +41,13 @@ struct Activity {
     }
 }
 
-extension Activity: Identifiable { }
+// MARK: ActivityType: Identifiable
+extension ActivityType: Identifiable { }
 
-extension Activity: Comparable {
+// MARK: ActivityType: Comparable
+extension ActivityType: Comparable {
     /// Lexicographic order
-    static func < (lhs: Activity, rhs: Activity) -> Bool {
+    static func < (lhs: ActivityType, rhs: ActivityType) -> Bool {
         lhs.name < rhs.name
     }
 }

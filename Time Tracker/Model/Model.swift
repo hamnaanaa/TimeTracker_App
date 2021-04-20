@@ -11,34 +11,100 @@ import Foundation
 /// The `Model` for the Time Tracker App
 class Model: ObservableObject {
     /// All `Activity` entries stored as a list
-    @Published var storedActivities: [Activity]
-    /// All available `Activity` names
-//    @Published var allActivityNames: [String]
+    @Published var activityTypes: [ActivityType]
+    /// All `TimeInterval`s stored as a list
+    @Published var timeIntervals: [TimeInterval]
+    
+    /// Store the active `TimeInterval` internally to access its id in a constant time to modify the interval if needed
+    private var activeTimeIntervals: [TimeInterval] = []
     
     /// - Parameters:
-    ///     - storedActivities: All `Activity` entries stored as a list
-    ///     - allActivityNames: All available `Activity` names
-    init(storedActivities: [Activity] = [], allActivityNames: [String] = []) {
-        self.storedActivities = storedActivities
-//        self.allActivityNames = allActivityNames
+    ///     - storedActivities: All `ActivityType`s stored as a list
+    ///     - allActivityNames: All available `ActivityType` names
+    init(activityTypes: [ActivityType] = [], timeIntervals: [TimeInterval] = []) {
+        self.activityTypes = activityTypes
+        self.timeIntervals = timeIntervals
+        
+        updateStates()
     }
     
-    /// Get an `Activity` for a specific ID
-    /// - Parameters:
-    ///    - id: The id of the `Activity`  to find
-    /// - Returns: The corresponding `Activity` if there exists one with the specified id, otherwise nil
-    func activity(_ id: Activity.ID) -> Activity? {
-        storedActivities.first { $0.id == id }
+    /// Updates the states of this `Model`
+    func updateStates() {
+        self.activeTimeIntervals = self.timeIntervals.filter { $0.isActive }
     }
     
-    /// Change the `Activity`'s state by toggling its isActive property
+    /// Get an `ActivityType` for a specific ID
     /// - Parameters:
-    ///    - id: The id of the `Activity` to update
-    func toggleActivity(of id: Activity.ID) {
-        guard let index = storedActivities.firstIndex(where: { $0.id == id }) else {
+    ///    - id: The id of the `ActivityType`  to find
+    /// - Returns: The corresponding `ActivityType` if there exists one with the specified id, otherwise nil
+    func activityType(_ id: ActivityType.ID?) -> ActivityType? {
+        activityTypes.first { $0.id == id }
+    }
+    
+    /// Get a `TimeInterval` for a specific ID
+    /// - Parameters:
+    ///    - id: The id of the `TimeInterval`  to find
+    /// - Returns: The corresponding `TimeInterval` if there exists one with the specified id, otherwise nil
+    func timeInterval(_ id: TimeInterval.ID) -> TimeInterval? {
+        timeIntervals.first { $0.id == id }
+    }
+    
+    /// Change the `ActivityType`'s state by toggling its isActive property and manage the corresponding `TimeInterval`s
+    /// - Parameters:
+    ///    - id: The id of the `ActivityType` to update
+    func toggleActivityType(with id: ActivityType.ID) {
+        guard let index = activityTypes.firstIndex(where: { $0.id == id }) else {
             return
         }
+        activityTypes[index].toggle()
         
-        storedActivities[index].toggle()
+        let currentActivityType = activityTypes[index]
+        if currentActivityType.isActive {
+            let newTimeInterval = TimeInterval(activityType: currentActivityType.id)
+            
+            timeIntervals.append(newTimeInterval)
+            activeTimeIntervals.append(newTimeInterval)
+        } else {
+            guard let activeTimeInterval = activeTimeIntervals.first(where: { $0.activityType == currentActivityType.id }),
+                  let index = timeIntervals.firstIndex(where: { $0.id == activeTimeInterval.id }) else {
+                // there is no active interval associated with the currentActivity that was stopped
+                return
+            }
+            
+            self.activeTimeIntervals = activeTimeIntervals.filter { $0.id != activeTimeInterval.id }
+            timeIntervals[index].stop()
+        }
+    }
+    
+    /// Find the latest `TimeInterval` associated with the given `ActivityType` and return its start and end times
+    /// - Parameters:
+    ///    - id: The id of the `ActivityType` to use in the search for the `TimeInterval`
+    /// - Returns: A tuple of two optional dates (start & end times)
+    /// startTime might be nil, if there is no `TimeInterval` associated with the given `ActivityType`. In this case the endTime is also nil
+    /// In addition, endTime might be nil, if the found `TimeInterval` is still active
+    func latestIntervalTimes(of activityTypeID: ActivityType.ID) -> (Date?, Date?) {
+        let latestTimeInterval = timeIntervals
+            .filter { $0.activityType == activityTypeID }
+            .sorted()
+            .first
+        
+        return (latestTimeInterval?.startTime, latestTimeInterval?.endTime)
+    }
+    
+    /// Calculate the total `TimeInterval`s duration sum associated with the given `ActivityType`
+    /// - Parameters:
+    ///    - id: The id of the `ActivityType` to use in the search for the `TimeInterval`s
+    /// - Returns: Total number of seconds
+    func cumulativeIntervalTimes(of activityTypeID: ActivityType.ID) -> Double {
+        // FEATURE: consider only time intervals from today
+        timeIntervals
+            .filter { $0.activityType == activityTypeID }
+            .reduce(0) { accum, timeInterval in
+            if timeInterval.isActive {
+                return accum + Date().timeIntervalSince(timeInterval.startTime)
+            } else {
+                return accum + timeInterval.endTime!.timeIntervalSince(timeInterval.startTime)
+            }
+        }
     }
 }

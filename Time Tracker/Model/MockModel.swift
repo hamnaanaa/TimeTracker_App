@@ -11,15 +11,15 @@ import SwiftUI
 // MARK: - MockModel
 /// A `Model` that replaces the content of the Time Tracker App with a predefined set of elements every time it is initialized
 class MockModel: Model {
-    private static func createActivity(_ name: String, color: Color, isActive: Bool, imageName: String = "record.circle") -> Activity {
-        Activity(name: name,
+    private static func createActivity(_ name: String, color: Color, isActive: Bool, imageName: String = "record.circle") -> ActivityType {
+        ActivityType(name: name,
                  color: color,
                  isActive: isActive,
                  imageName: imageName)
     }
     
     convenience init() {
-        let allActivities = [
+        let allActivityTypes = [
             MockModel.createActivity("Free time", color: .green, isActive: true, imageName: "face.smiling"),
             MockModel.createActivity("Work", color: .blue, isActive: true),
             MockModel.createActivity("Food", color: .yellow, isActive: true),
@@ -28,6 +28,14 @@ class MockModel: Model {
             MockModel.createActivity("Sleep", color: .orange, isActive: false)
         ]
         
-        self.init(storedActivities: allActivities)
+        let timeIntervals = allActivityTypes.map { activityType -> TimeInterval in
+            if activityType.isActive {
+                return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: nil, activityType: activityType.id)
+            } else {
+                return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: Date(), activityType: activityType.id)
+            }
+        }
+        
+        self.init(activityTypes: allActivityTypes, timeIntervals: timeIntervals)
     }
 }
