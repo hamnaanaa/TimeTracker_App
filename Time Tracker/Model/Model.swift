@@ -75,4 +75,36 @@ class Model: ObservableObject {
             timeIntervals[index].stop()
         }
     }
+    
+    /// Find the latest `TimeInterval` associated with the given `ActivityType` and return its start and end times
+    /// - Parameters:
+    ///    - id: The id of the `ActivityType` to use in the search for the `TimeInterval`
+    /// - Returns: A tuple of two optional dates (start & end times)
+    /// startTime might be nil, if there is no `TimeInterval` associated with the given `ActivityType`. In this case the endTime is also nil
+    /// In addition, endTime might be nil, if the found `TimeInterval` is still active
+    func latestIntervalTimes(of activityTypeID: ActivityType.ID) -> (Date?, Date?) {
+        let latestTimeInterval = timeIntervals
+            .filter { $0.activityType == activityTypeID }
+            .sorted()
+            .first
+        
+        return (latestTimeInterval?.startTime, latestTimeInterval?.endTime)
+    }
+    
+    /// Calculate the total `TimeInterval`s duration sum associated with the given `ActivityType`
+    /// - Parameters:
+    ///    - id: The id of the `ActivityType` to use in the search for the `TimeInterval`s
+    /// - Returns: Total number of seconds
+    func cumulativeIntervalTimes(of activityTypeID: ActivityType.ID) -> Double {
+        // FEATURE: consider only time intervals from today
+        timeIntervals
+            .filter { $0.activityType == activityTypeID }
+            .reduce(0) { accum, timeInterval in
+            if timeInterval.isActive {
+                return accum + Date().timeIntervalSince(timeInterval.startTime)
+            } else {
+                return accum + timeInterval.endTime!.timeIntervalSince(timeInterval.startTime)
+            }
+        }
+    }
 }

@@ -11,7 +11,7 @@ import SwiftUI
 /// A view (activity cell) representing a single `ActivityTypeCell`
 struct ActivityTypeCell: View {
     /// The ViewModel to manage the logic of this `ActivityTypeCell`
-    @ObservedObject private var viewModel: AcitivityTypeCellViewModel
+    @ObservedObject private var viewModel: ActivityTypeCellViewModel
     
     // Visual constants
     /// The standard color for the inactive `ActivityTypeCell`
@@ -36,10 +36,26 @@ struct ActivityTypeCell: View {
             Text(viewModel.name)
                 .minimumScaleFactor(0.1)
                 .scaledToFit()
-            // TODO replace with real values from the viewmodel
-            Text("6:55 pm - 11:55 pm")
-                .minimumScaleFactor(0.5)
-                .scaledToFit()
+
+            // TODO: work on fonts to make everything more proportional
+            
+            // display the latest time interval associated with this ActivityType
+            // if active, only the start time is shown, e.g. "1:15 PM -"
+            // else, if at least one TimeInterval exists (= startTime is not nil) both start and end times are shown, e.g. "1:15 PM - 3:00 PM"
+            // otherwise, an empty text is shown
+            if viewModel.isActive, let lastStartTime = viewModel.lastStartTime {
+                Text("\(DateFormatter.onlyTime.string(from: lastStartTime)) - ")
+                    .foregroundColor(.primary)
+                    .minimumScaleFactor(0.5)
+                    .scaledToFit()
+            } else if let lastStartTime = viewModel.lastStartTime, let lastEndTime = viewModel.lastEndTime {
+                Text("\(DateFormatter.onlyTime.string(from: lastStartTime)) - \(DateFormatter.onlyTime.string(from: lastEndTime))")
+                    .foregroundColor(.secondary)
+                    .minimumScaleFactor(0.5)
+                    .scaledToFit()
+            } else {
+                Text("")
+            }
         }
     }
     
@@ -47,8 +63,10 @@ struct ActivityTypeCell: View {
     private var timeDisplay: some View {
         // TODO replace with real values from the viewmodel
         VStack(alignment: .trailing) {
-            Text("03:25").bold()
-            Text("00:46")
+            Text(viewModel.totalTimePassed.description).bold()
+            Text(viewModel.timePassed?.description ?? "")
+        }.onReceive(viewModel.timer) { _ in
+            viewModel.updateTimePassed()
         }
     }
     
@@ -100,7 +118,7 @@ struct ActivityTypeCell: View {
     ///     - model: The `Model` to read the `ActivityType` from
     ///     - id: The stable identity of the `ActivityType`
     init(_ model: Model, id: ActivityType.ID) {
-        viewModel = AcitivityTypeCellViewModel(model, id: id)
+        viewModel = ActivityTypeCellViewModel(model, id: id)
     }
 }
 

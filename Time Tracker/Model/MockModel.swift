@@ -30,7 +30,7 @@ class MockModel: Model {
         
         let timeIntervals = allActivityTypes.map { activityType -> TimeInterval in
             if activityType.isActive {
-                return TimeInterval(activityType: activityType.id)
+                return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: nil, activityType: activityType.id)
             } else {
                 return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: Date(), activityType: activityType.id)
             }

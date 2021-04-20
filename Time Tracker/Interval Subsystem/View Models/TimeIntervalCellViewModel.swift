@@ -15,6 +15,7 @@ class TimeIntervalCellViewModel: ObservableObject {
     @Published var startTime: Date = Date()
     /// The optional end time of this `TimeInterval` with nil representing an active one
     @Published var endTime: Date? = nil
+    /// Display the duration (for format, see `TimeDisplayer` implementation)
     @Published var timePassed: TimeDisplayer = TimeDisplayer()
     /// The stable identity of the `ActivityType` this `TimeInterval` is linked to
     @Published var activityType: ActivityType.ID? = nil
@@ -57,6 +58,7 @@ class TimeIntervalCellViewModel: ObservableObject {
         updateTimePassed()
     }
     
+    /// Re-calculate how much time has passed
     func updateTimePassed() {
         self.timePassed = TimeDisplayer(secondsPassed: isActive ? Date().timeIntervalSince(startTime) : endTime!.timeIntervalSince(startTime))
     }
