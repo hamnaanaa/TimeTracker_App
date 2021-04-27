@@ -26,8 +26,8 @@
 		F2DA7803262B56A4000174A3 /* ActivityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA7802262B56A4000174A3 /* ActivityType.swift */; };
 		F2DA7808262B5756000174A3 /* ActivityTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA7807262B5756000174A3 /* ActivityTypeCell.swift */; };
 		F2DA780C262B5839000174A3 /* ActivityTypeCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2DA780B262B5839000174A3 /* ActivityTypeCellViewModel.swift */; };
-		F2FAE6442638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.09.png in Resources */ = {isa = PBXBuildFile; fileRef = F2FAE6422638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.09.png */; };
-		F2FAE6452638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.13.png in Resources */ = {isa = PBXBuildFile; fileRef = F2FAE6432638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.13.png */; };
+		F2FAE6442638ABB40078B2C7 /* ActivitiesScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F2FAE6422638ABB40078B2C7 /* ActivitiesScreenshot.png */; };
+		F2FAE6452638ABB40078B2C7 /* HistoryScreenshot.png in Resources */ = {isa = PBXBuildFile; fileRef = F2FAE6432638ABB40078B2C7 /* HistoryScreenshot.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,8 +52,8 @@
 		F2DA7802262B56A4000174A3 /* ActivityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityType.swift; sourceTree = "<group>"; };
 		F2DA7807262B5756000174A3 /* ActivityTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeCell.swift; sourceTree = "<group>"; };
 		F2DA780B262B5839000174A3 /* ActivityTypeCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityTypeCellViewModel.swift; sourceTree = "<group>"; };
-		F2FAE6422638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.09.png"; sourceTree = "<group>"; };
-		F2FAE6432638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.13.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.13.png"; sourceTree = "<group>"; };
+		F2FAE6422638ABB40078B2C7 /* ActivitiesScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ActivitiesScreenshot.png; sourceTree = "<group>"; };
+		F2FAE6432638ABB40078B2C7 /* HistoryScreenshot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = HistoryScreenshot.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -210,8 +210,8 @@
 		F2FAE6412638AB8B0078B2C7 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				F2FAE6422638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.09.png */,
-				F2FAE6432638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.13.png */,
+				F2FAE6422638ABB40078B2C7 /* ActivitiesScreenshot.png */,
+				F2FAE6432638ABB40078B2C7 /* HistoryScreenshot.png */,
 			);
 			path = Screenshots;
 			sourceTree = "<group>";
@@ -275,8 +275,8 @@
 			files = (
 				F2DA77F1262B5542000174A3 /* Preview Assets.xcassets in Resources */,
 				F2DA77EE262B5542000174A3 /* Assets.xcassets in Resources */,
-				F2FAE6452638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.13.png in Resources */,
-				F2FAE6442638ABB40078B2C7 /* Simulator Screen Shot - iPhone 12 Pro - 2021-04-27 at 22.27.09.png in Resources */,
+				F2FAE6452638ABB40078B2C7 /* HistoryScreenshot.png in Resources */,
+				F2FAE6442638ABB40078B2C7 /* ActivitiesScreenshot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
