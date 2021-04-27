@@ -38,8 +38,8 @@ class ActivityTypeCellViewModel: ObservableObject {
     /// The `Model` to read the `ActivityType` from
     @ObservedObject var model: Model
     
-    /// A timer used to refresh the `ActivityTypeCell` every 60 seconds
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    /// A timer used to refresh the `ActivityTypeCell` every second
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     /// - Parameters:
     ///     - model: The `Model` to read the `ActivityType` from

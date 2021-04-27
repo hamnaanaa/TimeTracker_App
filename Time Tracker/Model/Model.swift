@@ -32,7 +32,11 @@ class Model: ObservableObject {
     func updateStates() {
         self.activeTimeIntervals = self.timeIntervals.filter { $0.isActive }
     }
-    
+}
+
+
+// MARK: - Model + ActivityType
+extension Model {
     /// Get an `ActivityType` for a specific ID
     /// - Parameters:
     ///    - id: The id of the `ActivityType`  to find
@@ -41,13 +45,6 @@ class Model: ObservableObject {
         activityTypes.first { $0.id == id }
     }
     
-    /// Get a `TimeInterval` for a specific ID
-    /// - Parameters:
-    ///    - id: The id of the `TimeInterval`  to find
-    /// - Returns: The corresponding `TimeInterval` if there exists one with the specified id, otherwise nil
-    func timeInterval(_ id: TimeInterval.ID) -> TimeInterval? {
-        timeIntervals.first { $0.id == id }
-    }
     
     /// Change the `ActivityType`'s state by toggling its isActive property and manage the corresponding `TimeInterval`s
     /// - Parameters:
@@ -75,6 +72,27 @@ class Model: ObservableObject {
             timeIntervals[index].stop()
         }
     }
+}
+
+
+// MARK: - Model + TimeInterval
+extension Model {
+    /// Get a `TimeInterval` for a specific ID from all `TimeInterval`s
+    /// - Parameters:
+    ///    - id: The id of the `TimeInterval`  to find
+    /// - Returns: The corresponding `TimeInterval` if there exists one with the specified id, otherwise nil
+    func timeInterval(_ id: TimeInterval.ID) -> TimeInterval? {
+        timeIntervals.first { $0.id == id }
+    }
+    
+    /// Get a `TimeInterval` for a specific ID *only* from *active* `TimeInterval`s
+    /// - Parameters:
+    ///    - id: The id of the `TimeInterval`  to find
+    /// - Returns: The corresponding `TimeInterval` if there exists one with the specified id, otherwise nil
+    func activeTimeInterval(_ id: TimeInterval.ID) -> TimeInterval? {
+        activeTimeIntervals.first { $0.id == id }
+    }
+    
     
     /// Find the latest `TimeInterval` associated with the given `ActivityType` and return its start and end times
     /// - Parameters:
@@ -91,6 +109,7 @@ class Model: ObservableObject {
         return (latestTimeInterval?.startTime, latestTimeInterval?.endTime)
     }
     
+    
     /// Calculate the total `TimeInterval`s duration sum associated with the given `ActivityType`
     /// - Parameters:
     ///    - id: The id of the `ActivityType` to use in the search for the `TimeInterval`s
@@ -106,5 +125,18 @@ class Model: ObservableObject {
                 return accum + timeInterval.endTime!.timeIntervalSince(timeInterval.startTime)
             }
         }
+    }
+    
+    
+    /// Delete the specified `TimeInterval`
+    /// - Parameters:
+    ///     - id: The identifier of the `TimeInterval` to delete
+    func delete(timeInterval id: TimeInterval.ID) {
+        // !!! FIXME: something is wrong with sorting the timeintervals after deletion
+        if let activityID = activityType(activeTimeInterval(id)?.activityType)?.id {
+            activeTimeIntervals.removeAll(where: { $0.id == id })
+            toggleActivityType(with: activityID)
+        }
+        timeIntervals.removeAll(where: { $0.id == id })
     }
 }

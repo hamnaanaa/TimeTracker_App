@@ -10,8 +10,6 @@ import SwiftUI
 // MARK: - ActivityTypesListView
 /// A view representing a list of `ActivityType`s
 struct ActivityTypesListView: View {
-    /// The `Model` to read the `ActivityType`s from
-    @EnvironmentObject private var model: Model
     /// The ViewModel to manage the logic of this `ActivityTypesListView`
     @ObservedObject private var viewModel: ActivityTypesListViewModel
     
@@ -19,7 +17,7 @@ struct ActivityTypesListView: View {
     var body: some View {
         NavigationView {
             List(viewModel.activityTypes) { activity in
-                ActivityTypeCell(model, id: activity.id)
+                ActivityTypeCell(viewModel.model, id: activity.id)
             }
             .navigationBarTitle("Activities", displayMode: .inline)
             .toolbar {

@@ -31,8 +31,8 @@ class TimeIntervalCellViewModel: ObservableObject {
         endTime == nil
     }
     
-    /// A timer used to refresh the `TimeIntervalCell` every 60 seconds
-    let timer = Timer.publish(every: 60, on: .main, in: .common).autoconnect()
+    /// A timer used to refresh the `TimeIntervalCell` every second
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     /// - Parameters:
     ///     - model: The `Model` to read the `TimeInterval` from

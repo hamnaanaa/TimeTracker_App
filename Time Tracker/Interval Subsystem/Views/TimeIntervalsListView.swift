@@ -10,16 +10,18 @@ import SwiftUI
 // MARK: - TimeIntervalsListView
 /// A view representing a list of `TimeInterval`s
 struct TimeIntervalsListView: View {
-    /// The `Model` to read the `TimeInterval`s from
-    @EnvironmentObject private var model: Model
     /// The ViewModel to manage the logic of this `TimeIntervalsListView`
     @ObservedObject private var viewModel: TimeIntervalsListViewModel
     
     var body: some View {
         NavigationView {
-            List(viewModel.timeIntervals.sorted()) { timeInterval in
-                TimeIntervalCell(model, id: timeInterval.id)
-            }.navigationBarTitle("Time Intervals", displayMode: .inline)
+            List {
+                ForEach(viewModel.timeIntervals) { timeInterval in
+                    TimeIntervalCell(viewModel.model, id: timeInterval.id)
+                }
+                .onDelete(perform: viewModel.delete(at:))
+            }
+            .navigationBarTitle("History", displayMode: .inline)
             .toolbar {
                 // TODO add functionality
                 Button(action: { }) {

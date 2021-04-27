@@ -32,7 +32,7 @@ extension TimeDisplayer: CustomStringConvertible {
     var description: String {
         showSeconds ?
             "\(display(hours)):\(display(minutes)):\(display(seconds))" :
-            hours == 0 && minutes == 0 ? "<1" : "\(display(hours)):\(display(minutes))"
+            hours == 0 && minutes == 0 ? (seconds == 0 ? "" : "\(seconds)s") : "\(display(hours)):\(display(minutes))"
     }
     
     private func display(_ time: Int) -> String {
