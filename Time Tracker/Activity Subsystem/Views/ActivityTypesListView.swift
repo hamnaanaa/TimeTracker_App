@@ -16,9 +16,13 @@ struct ActivityTypesListView: View {
     
     var body: some View {
         NavigationView {
-            List(viewModel.activityTypes) { activity in
-                ActivityTypeCell(viewModel.model, id: activity.id)
+            ScrollView {
+                ForEach(viewModel.activityTypes) { activity in
+                    ActivityTypeCell(viewModel.model, id: activity.id)
+                        .padding([.trailing, .leading], 10)
+                }
             }
+            .padding(.top, 10)
             .navigationBarTitle("Activities", displayMode: .inline)
             .toolbar {
                 // TODO add functionality
@@ -26,9 +30,6 @@ struct ActivityTypesListView: View {
                     Image(systemName: "plus")
                 }
             }
-            .padding(.top, 10)
-            .padding(.trailing, -10)
-            .padding(.leading, -10)
         }
     }
     

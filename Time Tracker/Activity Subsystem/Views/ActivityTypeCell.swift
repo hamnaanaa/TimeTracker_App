@@ -54,7 +54,7 @@ struct ActivityTypeCell: View {
                     .minimumScaleFactor(0.5)
                     .scaledToFit()
             } else {
-                Text("")
+                Text("-")
             }
         }
     }
@@ -107,8 +107,7 @@ struct ActivityTypeCell: View {
             ZStack {
                 activityTypeBackground
                 activityTypeForeground
-                    .padding(.leading)
-                    .padding(.trailing)
+                    .padding([.leading, .trailing])
             }
         }.foregroundColor(.primary)
     }
