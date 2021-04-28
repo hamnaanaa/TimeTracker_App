@@ -17,7 +17,7 @@ class MockModel: Model {
                  isActive: isActive,
                  imageName: imageName)
     }
-    
+
     convenience init() {
         let allActivityTypes = [
             MockModel.createActivity("Free time", color: .green, isActive: true, imageName: "face.smiling"),
@@ -27,15 +27,19 @@ class MockModel: Model {
             MockModel.createActivity("Groceries", color: .red, isActive: false),
             MockModel.createActivity("Sleep", color: .orange, isActive: false)
         ]
-        
+
         let timeIntervals = allActivityTypes.map { activityType -> TimeInterval in
             if activityType.isActive {
-                return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: nil, activityType: activityType.id)
+                return TimeInterval(startTime: Date() - Double.random(in: 1...4800),
+                                    endTime: nil,
+                                    activityType: activityType.id)
             } else {
-                return TimeInterval(startTime: Date() - Double.random(in: 1...4800), endTime: Date(), activityType: activityType.id)
+                return TimeInterval(startTime: Date() - Double.random(in: 1...4800),
+                                    endTime: Date(),
+                                    activityType: activityType.id)
             }
         }
-        
+
         self.init(activityTypes: allActivityTypes, timeIntervals: timeIntervals)
     }
 }

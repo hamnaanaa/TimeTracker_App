@@ -18,7 +18,7 @@ extension DateFormatter {
         dateFormatter.dateStyle = .long
         return dateFormatter
     }()
-    
+
     /// Formatter that includes only the date.
     /// Example: 9/3/18
     public static let onlyDate: DateFormatter = {
@@ -27,7 +27,7 @@ extension DateFormatter {
         dateFormatter.dateStyle = .short
         return dateFormatter
     }()
-    
+
     /// Formatter that includes only the date.
     /// Example: 3:38 PM
     public static let onlyTime: DateFormatter = {

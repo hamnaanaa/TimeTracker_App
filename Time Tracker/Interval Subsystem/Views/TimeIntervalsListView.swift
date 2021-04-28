@@ -12,7 +12,7 @@ import SwiftUI
 struct TimeIntervalsListView: View {
     /// The ViewModel to manage the logic of this `TimeIntervalsListView`
     @ObservedObject private var viewModel: TimeIntervalsListViewModel
-    
+
     var body: some View {
         NavigationView {
             List {
@@ -30,7 +30,7 @@ struct TimeIntervalsListView: View {
             }
         }
     }
-    
+
     init(_ model: Model) {
         viewModel = TimeIntervalsListViewModel(model)
     }
@@ -38,7 +38,7 @@ struct TimeIntervalsListView: View {
 
 struct TimeIntervalsListView_Previews: PreviewProvider {
     private static var model = MockModel()
-    
+
     static var previews: some View {
         Group {
             TimeIntervalsListView(model)

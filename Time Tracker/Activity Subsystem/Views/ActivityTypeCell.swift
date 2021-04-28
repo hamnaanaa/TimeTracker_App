@@ -12,7 +12,7 @@ import SwiftUI
 struct ActivityTypeCell: View {
     /// The ViewModel to manage the logic of this `ActivityTypeCell`
     @ObservedObject private var viewModel: ActivityTypeCellViewModel
-    
+
     // Visual constants
     /// The standard color for the inactive `ActivityTypeCell`
     private var inactiveColor: Color = .secondary
@@ -28,8 +28,7 @@ struct ActivityTypeCell: View {
     private var inactiveTrailingOpacity: Double = 0.1
     /// The stroke width of the line used as a border for this `ActivityTypeCell`
     private var lineWidth: CGFloat = 2
-    
-    
+
     /// A view displaying the name of the `ActivityType` and the timeline
     private var description: some View {
         VStack(alignment: .leading) {
@@ -38,7 +37,7 @@ struct ActivityTypeCell: View {
                 .scaledToFit()
 
             // TODO: work on fonts to make everything more proportional
-            
+
             // display the latest time interval associated with this ActivityType
             // if active, only the start time is shown, e.g. "1:15 PM -"
             // else, if at least one TimeInterval exists (= startTime is not nil) both start and end times are shown, e.g. "1:15 PM - 3:00 PM"
@@ -58,7 +57,7 @@ struct ActivityTypeCell: View {
             }
         }
     }
-    
+
     /// A view displaying timer and total time
     private var timeDisplay: some View {
         // TODO replace with real values from the viewmodel
@@ -69,7 +68,7 @@ struct ActivityTypeCell: View {
             viewModel.updateTimePassed()
         }
     }
-    
+
     /// A view displaying the background of this `ActivityTypeCell`
     private var activityTypeBackground: some View {
         RoundedRectangle(cornerRadius: cornerRadius)
@@ -78,10 +77,9 @@ struct ActivityTypeCell: View {
                 RoundedRectangle(cornerRadius: cornerRadius)
                     .fill(
                         LinearGradient(gradient:
-                                        Gradient(
-                                            colors: [
-                                                viewModel.isActive ? viewModel.color.opacity(activeLeadingOpacity) : inactiveColor.opacity(inactiveLeadingOpacity),
-                                                viewModel.isActive ? viewModel.color.opacity(activeTrailingOpacity) : inactiveColor.opacity(inactiveTrailingOpacity)]
+                                        Gradient(colors: [
+                                                    viewModel.isActive ? viewModel.color.opacity(activeLeadingOpacity) : inactiveColor.opacity(inactiveLeadingOpacity),
+                                                    viewModel.isActive ? viewModel.color.opacity(activeTrailingOpacity) : inactiveColor.opacity(inactiveTrailingOpacity)]
                                         ),
                                        startPoint: .leading,
                                        endPoint: .trailing)
@@ -89,7 +87,7 @@ struct ActivityTypeCell: View {
             )
             .frame(height: borderFrameSize)
     }
-    
+
     /// A view displaying the foreground (text/icon/time) of this `ActivityTypeCell`
     private var activityTypeForeground: some View {
         HStack(spacing: 16) {
@@ -101,7 +99,7 @@ struct ActivityTypeCell: View {
             timeDisplay
         }
     }
-    
+
     var body: some View {
         Button(action: { viewModel.toggleActivityType() }) {
             ZStack {
@@ -111,8 +109,7 @@ struct ActivityTypeCell: View {
             }
         }.foregroundColor(.primary)
     }
-    
-    
+
     /// - Parameters:
     ///     - model: The `Model` to read the `ActivityType` from
     ///     - id: The stable identity of the `ActivityType`
@@ -126,7 +123,7 @@ struct ActivityTypeCell_Previews: PreviewProvider {
     private static var model = MockModel()
     // different color schemes to test
     private static var colorSchemes = [ColorScheme.light, .dark]
-    
+
     static var previews: some View {
         Group {
             ForEach(model.activityTypes) { activity in

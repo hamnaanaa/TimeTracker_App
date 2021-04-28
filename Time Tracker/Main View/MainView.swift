@@ -10,7 +10,7 @@ import SwiftUI
 struct MainView: View {
     @EnvironmentObject var model: Model
     @Environment(\.colorScheme) var colorScheme: ColorScheme
-    
+
     var body: some View {
         TabView {
             ActivityTypesListView(model)
@@ -27,7 +27,7 @@ struct MainView: View {
 
 struct MainView_Previews: PreviewProvider {
     private static var model = MockModel()
-    
+
     static var previews: some View {
         Group {
             MainView().preferredColorScheme(.light)

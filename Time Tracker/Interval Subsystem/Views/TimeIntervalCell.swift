@@ -12,7 +12,7 @@ import SwiftUI
 struct TimeIntervalCell: View {
     /// The ViewModel to manage the logic of this `TimeIntervalCell`
     @ObservedObject private var viewModel: TimeIntervalCellViewModel
-    
+
     // Visual constants
     /// The standard color for the active `TimeIntervalCell`
     private var activeColor: Color = .blue
@@ -26,7 +26,7 @@ struct TimeIntervalCell: View {
     /// The padding of the image to both top and bottom or edge for this `TimeIntervalCell`
     private var imageVerticalPadding: CGFloat = 5
     private var imageEdgePadding: CGFloat = 7
-    
+
     /// A view displaying the name of the `ActivityType` associated with this `TimeInterval`
     private var description: some View {
         VStack(alignment: .leading) {
@@ -34,7 +34,7 @@ struct TimeIntervalCell: View {
                 .foregroundColor(viewModel.isActive ? activeColor : .primary)
                 .minimumScaleFactor(0.1)
                 .scaledToFit()
-            
+
             // if active, only the start time is shown, e.g. "1:15 PM -"
             // else, both start and end times are shown, e.g. "1:15 PM - 3:00 PM"
             if viewModel.isActive {
@@ -50,7 +50,7 @@ struct TimeIntervalCell: View {
             }
         }
     }
-    
+
     /// A view displaying the timer
     private var timeDisplay: some View {
         // TODO replace with real time
@@ -62,11 +62,12 @@ struct TimeIntervalCell: View {
                 viewModel.updateTimePassed()
             }
     }
-    
+
     /// A view displaying the foreground of this `TimeIntervalCell`
     private var timeIntervalForeground: some View {
         HStack(spacing: 10) {
-            // question mark identifies that something went wrong with linking this timeInterval to associatedActivityType
+            // question mark identifies that something went wrong
+            // with linking this timeInterval to associatedActivityType
             Image(systemName: viewModel.associatedActivityType?.imageName ?? "questionmark")
                 .resizable()
                 .foregroundColor(viewModel.associatedActivityType?.color)
@@ -74,18 +75,17 @@ struct TimeIntervalCell: View {
                 .padding(.leading, imageEdgePadding)
                 .padding(.bottom, imageVerticalPadding)
                 .padding(.top, imageVerticalPadding)
-                
+
             description
             Spacer()
             timeDisplay
         }
     }
-    
+
     var body: some View {
         timeIntervalForeground
     }
 
-    
     /// - Parameters:
     ///     - model: The `Model` to read the `TimeInterval` from
     ///     - id: The stable identity of the `ActivityType`
@@ -99,7 +99,7 @@ struct TimeIntervalCell_Previews: PreviewProvider {
     private static var model = MockModel()
     // different color schemes to test
     private static var colorSchemes = [ColorScheme.light, .dark]
-    
+
     static var previews: some View {
         Group {
             ForEach(model.timeIntervals) { timeInterval in

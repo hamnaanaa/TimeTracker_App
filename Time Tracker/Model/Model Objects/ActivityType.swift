@@ -22,7 +22,6 @@ struct ActivityType {
     /// The name of the `Image` associated with this `Activity`
     var imageName: String
 
-    
     /// - Parameters:
     ///     - id: The stable identity of the `ActivityType` (generated from init by default)
     ///     - name: The name of the `ActivityType`
@@ -34,7 +33,7 @@ struct ActivityType {
         self.isActive = isActive
         self.imageName = imageName
     }
-    
+
     /// Toggle the isActive property
     mutating func toggle() {
         isActive.toggle()

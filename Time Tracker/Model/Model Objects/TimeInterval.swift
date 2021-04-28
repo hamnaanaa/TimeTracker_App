@@ -18,13 +18,12 @@ struct TimeInterval {
     var endTime: Date?
     /// The  `Activity` this `TimeInterval` is linked to
     var activityType: ActivityType.ID?
-    
+
     /// A computed property indicating whether this `TimeInterval` is still active
     var isActive: Bool {
         endTime == nil
     }
-    
-    
+
     /// - Parameters:
     ///     - id: The stable identity of the `TimeInterval` (generated from init by default)
     ///     - startTime: The startTime of the `TimeInterval` (generated from init by default as the current date)
@@ -35,14 +34,14 @@ struct TimeInterval {
         self.endTime = endTime
         self.activityType = activityType
     }
-    
+
     /// Stop this `TimeInterval` at the given (by default current) time
     mutating func stop(date time: Date = Date()) {
         // Assure this interval was not stopped already
         guard endTime == nil else {
             return
         }
-        
+
         endTime = time
     }
 }

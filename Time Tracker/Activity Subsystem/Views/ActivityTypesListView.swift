@@ -12,8 +12,7 @@ import SwiftUI
 struct ActivityTypesListView: View {
     /// The ViewModel to manage the logic of this `ActivityTypesListView`
     @ObservedObject private var viewModel: ActivityTypesListViewModel
-    
-    
+
     var body: some View {
         NavigationView {
             ScrollView {
@@ -32,8 +31,7 @@ struct ActivityTypesListView: View {
             }
         }
     }
-    
-    
+
     /// - Parameters:
     ///     - model: The `Model` to read `ActivityType`s from
     init(_ model: Model) {
@@ -44,7 +42,7 @@ struct ActivityTypesListView: View {
 // MARK: - ActivityTypesListView Previews
 struct ActivityTypesListView_Previews: PreviewProvider {
     private static var model = MockModel()
-    
+
     static var previews: some View {
         Group {
             ActivityTypesListView(model)

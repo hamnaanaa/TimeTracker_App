@@ -10,18 +10,18 @@ import SwiftUI
 
 // MARK: - TODO
 class ActivityTypesListViewModel: ObservableObject {
-    //TODO
+    // TODO
     /// The `Model` to read the list of `Activity`s from
     @ObservedObject var model: Model
-    
+
     @Published var activityTypes: [ActivityType] = []
-    
+
     init(_ model: Model) {
         self.model = model
-        
+
         updateState()
     }
-    
+
     private func updateState() {
         self.activityTypes = model.activityTypes
     }
